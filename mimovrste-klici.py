@@ -33,4 +33,4 @@ for a in cities():
     lat = a[1]
     lon = a[2]
     getCurrTemp(lat,lon)
-    
+    #sprememba
