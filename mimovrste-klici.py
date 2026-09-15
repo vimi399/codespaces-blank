@@ -13,6 +13,7 @@ def getCurrTemp(lat, lon):
     call = requests.get(url).json()
 
     print(call["current"]["temperature_2m"])
+    return call["current"]["temperature_2m"]
 
 getCurrTemp(46.21827172610609, 14.373366916081991)
 #najdi natoplejše mesto
@@ -28,9 +29,12 @@ cities = [
     ("Kamnik",    46.2259, 14.6121),
     ("Jesenice",  46.4324, 14.0623),
 ]
-
-for a in cities():
+maxTemp = -273.15
+for a in cities:
     lat = a[1]
     lon = a[2]
-    getCurrTemp(lat,lon)
-    #sprememba
+    d = getCurrTemp(lat,lon)
+    if d > maxTemp:
+        maxTemp = d
+        mesto = a[0]
+print(mesto,maxTemp)
